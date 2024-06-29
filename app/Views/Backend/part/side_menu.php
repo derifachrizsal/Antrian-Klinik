@@ -32,10 +32,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="kategori" class="nav-link">
+            <a href="<?= base_url("/adm/pasien"); ?>" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Kategori
+                pasien
               </p>
             </a>
           </li>
