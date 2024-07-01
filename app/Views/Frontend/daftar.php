@@ -41,7 +41,7 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1>Selamat Datang</h1>
+                <h1>Pengguna Akun</h1>
             </div>
             <div class="row g-4">
                 <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
@@ -49,9 +49,8 @@
                         <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                             <i class="fa fa-heartbeat text-primary fs-4"></i>
                         </div>
-                        <h4 class="mb-3">Pendaftaran Online</h4>
-                        <p class="mb-4">Ambil Antrian</p>
-                        <a class="btn" href="<?= base_url('/daftar') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
+                        <h4 class="mb-3">Pasien Baru (Belum Pernah Berkunjung)</h4>
+                        <a class="btn" href="<?= base_url('/') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.3s">
@@ -59,9 +58,8 @@
                         <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                             <i class="fa fa-x-ray text-primary fs-4"></i>
                         </div>
-                        <h4 class="mb-3">Monitoring Antrian</h4>
-                        <p class="mb-4">Lihat List Antrian</p>
-                        <a class="btn" href="<?= base_url('/poli') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
+                        <h4 class="mb-3">Pasien Lama (Sudah Pernah Berkunjung)</h4>
+                        <a class="btn" href="<?= base_url('/') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
                     </div>
                 </div>
             </div>

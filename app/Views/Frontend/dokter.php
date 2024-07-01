@@ -43,21 +43,20 @@
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <p class="d-inline-block border rounded-pill py-1 px-4">Doctors</p>
-                <h1>Our Experience Doctors</h1>
+                <h1>Jadwal Dokter</h1>
             </div>
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-1.jpg" alt="">
+                            <img class="dr_kandung1.png" src="<?= base_url('template/img/dr_kandung1.png')?>" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
+                            <h5>dr. Hoo Yumilia,SP.OG</h5>
+                            <p class="text-primary">Poli Kebidanan & Kandungan</p>
+                            <p class="d-inline-block border rounded-pill py-1 px-4">Senin-Kamis</p>
                             <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                                
                             </div>
                         </div>
                     </div>
@@ -65,31 +64,61 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
+                            <img class="dr_kandung2.webp" src="<?= base_url('template/img/dr_kandung2.webp')?>" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
+                            <h5>dr. Elise Johana Knoch, Sp.OG</h5>
+                            <p class="text-primary">Poli Kebidanan & Kandungan</p>
+                            <p class="d-inline-block border rounded-pill py-1 px-4">Jumat-Sabtu</p>
                             <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="dr_umum1.webp" src="<?= base_url('template/img/dr_umum1.webp')?>" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>dr. Tono Djuwantono, Sp.PD</h5>
+                            <p class="text-primary">Poli Umum</p>
+                            <p class="d-inline-block border rounded-pill py-1 px-4">Senin-Rabu</p>
+                            <div class="team-social text-center">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="dr_umum2.webp" src="<?= base_url('template/img/dr_umum2.webp')?>" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>dr. Djonggi P Panggabean, Sp.PD</h5>
+                            <p class="text-primary">Poli Umum</p>
+                            <p class="d-inline-block border rounded-pill py-1 px-4">Kamis-Sabtu</p>
+                            <div class="team-social text-center">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
+                            <img class="dr_anak.webp" src="<?= base_url('template/img/dr_anak.webp')?>" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
+                            <h5>dr. Maximus Mudjur, Sp.A,M.Kes</h5>
+                            <p class="text-primary">Poli Anak</p>
+                            <p class="d-inline-block border rounded-pill py-1 px-4">Senin-Sabtu</p>
                             <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                               
                             </div>
                         </div>
                     </div>
@@ -97,15 +126,14 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
+                            <img class="dr_gigi.jpg" src="<?= base_url('template/img/dr_gigi.jpg')?>" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
+                            <h5>dr.Nana Agustina,Sp.KG</h5>
+                            <p class="text-primary">Poli Gigi</p>
+                            <p class="d-inline-block border rounded-pill py-1 px-4">Senin-Jumat</p>
                             <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                               
                             </div>
                         </div>
                     </div>
