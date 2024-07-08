@@ -11,8 +11,9 @@ class LoginController extends BaseController
     {
         //include helper form
         helper(['form']);
-        echo view('login');
+        echo view('Frontend/part/login');
     }
+    
     public function auth()
     {
          $session = session();
@@ -25,26 +26,27 @@ class LoginController extends BaseController
             $verify_pass = password_verify($password, $pass);
             if($verify_pass){
                 $ses_data = [
-            'id'          =>$data['id'],
-            'nama'         =>$data['nama'],
-            'email'      =>$data['email'],
-            'logged_in'  =>TRUE
-         ];
-         $session->set($ses_data);
-         return redirect()->to('/dashboard');
-    }else{
-        $session->setFlashdata('msg', 'Wrong Password');
-         return redirect()->to('/login');
+                    'id'          =>$data['id'],
+                    'nama'         =>$data['nama'],
+                    'email'      =>$data['email'],
+                    'logged_in'  =>TRUE
+                ];
+                $session->set($ses_data);
+                return redirect()->to('/dashboard');
+            }else{
+                $session->setFlashdata('msg', 'Wrong Password');
+                return redirect()->to('/login');
+            }
+        }else{
+            $session->setFlashdata('msg', 'Email not Found');
+            return redirect()->to('/login');
+        }
     }
-    }else{
-         $session->setFlashdata('msg', 'Email not Found');
-         return redirect()->to('/login');
+
+    public function logout()
+    {
+        $session = session();
+        $session->destory();
+        return redirect()->to('/login');
     }
 }
-    public function logout()
-{
-    $session = session();
-    $session->destory();
-    return redirect()->to('/login');
-    }
-{
