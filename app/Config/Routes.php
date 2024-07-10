@@ -18,6 +18,6 @@ $routes->get('/dokter', 'Frontend\DokterController::index');
 $routes->get('/poli', 'Frontend\PoliController::index');
 $routes->get('/daftar', 'Frontend\DaftarController::index', ['filter' => 'auth']);
 $routes->get('/login', 'Frontend\LoginController::index');
-
+$routes->add('/datapasien', 'Frontend\DataPasienController::index');
 // $routes->get('/', 'Home::index')
 
