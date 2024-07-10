@@ -15,7 +15,7 @@
 
                 <div class="col-6">
                     <h1>Sign In</h1>
-                    < ?php if(session()->getFlashdata('msg')): ?>
+                    <?php if(session()->getFlashdata('msg')): ?>
                         <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
                     <?php endif;?>
                     <form action="/login/auth" method="post">

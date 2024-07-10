@@ -11,6 +11,8 @@ $routes->get('/adm', 'Backend\DashboardController::index');
 $routes->get('/adm/pasien', 'Backend\PasienController::index');
 $routes->get('/adm/dokter', 'Backend\DokterController::index');
 $routes->add('/adm/dokter/add', 'Backend\DokterController::tambah');
+$routes->add('/adm/dokter/(:segment)/edit', 'Backend\DokterController::edit/$1');
+$routes->get('/adm/dokter/(:segment)/delete', 'Backend\DokterController::delete/$1');
 
 // FrontEnd
 $routes->get('/', 'Frontend\HomeController::index');

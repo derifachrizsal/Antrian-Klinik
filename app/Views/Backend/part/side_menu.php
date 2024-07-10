@@ -28,7 +28,7 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
 			<div class="sidebar-content">
 				<ul class="nav nav-secondary">
-					<li class="nav-item active">
+					<!-- <li class="nav-item">
 						<a data-bs-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
 							<i class="fas fa-home"></i>
 							<p>Dashboard</p>
@@ -43,19 +43,26 @@
 								</li>
 							</ul>
 						</div>
-					</li>
-					<li class="nav-item">
-						<a href="widgets.html">
-							<i class="fas fa-desktop"></i>
-							<p>Widgets</p>
-							<span class="badge badge-success">4</span>
+					</li> -->
+					<li class="nav-item <?php if (uri_string() == 'adm') echo 'active'; ?>">
+						<a href="<?= base_url('adm') ?>">
+							<i class="fas fa-home"></i>
+							<p>Dashboard</p>
+							<span class="badge badge-success"></span>
 						</a>
 					</li>
 					<li class="nav-section">
 						<span class="sidebar-mini-icon">
 							<i class="fa fa-ellipsis-h"></i>
 						</span>
-						<h4 class="text-section">Components</h4>
+						<h4 class="text-section">Master</h4>
+					</li>
+					<li class="nav-item <?php if (count(explode('/', uri_string())) > 1 && explode('/', uri_string())[1] == 'dokter') echo 'active'; ?>">
+						<a href="<?= base_url('adm/dokter') ?>">
+							<i class="fas fa-desktop"></i>
+							<p>Dokter</p>
+							<span class="badge badge-success"></span>
+						</a>
 					</li>
 				</ul>
 			</div>
