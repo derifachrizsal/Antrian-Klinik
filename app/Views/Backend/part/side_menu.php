@@ -1,47 +1,64 @@
-<!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
-      <img src="<?= base_url('template/dist/img/AdminLTELogo.png') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="<?= base_url('template/dist/img/user2-160x160.jpg') ?>" class="img-circle elevation-2" alt="User Image">
+	<!-- Sidebar -->
+	<div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+			<!-- Logo Header -->
+			<div class="logo-header" data-background-color="dark">
+				<a href="index.html" class="logo">
+					<img
+						src="<?= base_url('template/admin/img/kaiadmin/logo_light.svg') ?>"
+						alt="navbar brand"
+						class="navbar-brand"
+						height="20"
+					/>
+				</a>
+				<div class="nav-toggle">
+					<button class="btn btn-toggle toggle-sidebar">
+						<i class="gg-menu-right"></i>
+					</button>
+					<button class="btn btn-toggle sidenav-toggler">
+						<i class="gg-menu-left"></i>
+					</button>
+				</div>
+				<button class="topbar-toggler more">
+					<i class="gg-more-vertical-alt"></i>
+				</button>
+			</div>
+			<!-- End Logo Header -->
         </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+			<div class="sidebar-content">
+				<ul class="nav nav-secondary">
+					<li class="nav-item active">
+						<a data-bs-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+							<i class="fas fa-home"></i>
+							<p>Dashboard</p>
+							<span class="caret"></span>
+						</a>
+						<div class="collapse" id="dashboard">
+							<ul class="nav nav-collapse">
+								<li>
+									<a href="../demo1/index.html">
+										<span class="sub-item">Dashboard 1</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a href="widgets.html">
+							<i class="fas fa-desktop"></i>
+							<p>Widgets</p>
+							<span class="badge badge-success">4</span>
+						</a>
+					</li>
+					<li class="nav-section">
+						<span class="sidebar-mini-icon">
+							<i class="fa fa-ellipsis-h"></i>
+						</span>
+						<h4 class="text-section">Components</h4>
+					</li>
+				</ul>
+			</div>
         </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url("/adm/pasien"); ?>" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                pasien
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+	</div>
+	<!-- End Sidebar -->

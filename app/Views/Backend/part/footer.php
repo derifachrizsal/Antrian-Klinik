@@ -1,48 +1,96 @@
-<footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
+			<footer class="footer">
+				<div class="container-fluid d-flex justify-content-between">
+					<nav class="pull-left">
+						<ul class="nav">
+							<li class="nav-item">
+								<a class="nav-link" href="http://www.themekita.com">
+									ThemeKita
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#"> Help </a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#"> Licenses </a>
+							</li>
+						</ul>
+					</nav>
+					<div class="copyright">
+						2024, made with <i class="fa fa-heart heart text-danger"></i> by
+						<a href="http://www.themekita.com">ThemeKita</a>
+					</div>
+					<div>
+						Distributed by
+						<a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
+					</div>
+				</div>
+			</footer>
+		</div>
+
     </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
+    <!--   Core JS Files   -->
+    <script src="<?= base_url('template/admin/js/core/jquery-3.7.1.min.js') ?>"></script>
+    <script src="<?= base_url('template/admin/js/core/popper.min.js') ?>"></script>
+    <script src="<?= base_url('template/admin/js/core/bootstrap.min.js') ?>"></script>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+    <!-- jQuery Scrollbar -->
+    <script src="<?= base_url('template/admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') ?>"></script>
 
-<!-- jQuery -->
-<script src="<?= base_url('template/plugins/jquery/jquery.min.js') ?>"></script>
-<!-- Bootstrap 4 -->
-<script src="<?= base_url('template/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-<!-- DataTables  & Plugins -->
-<script src="<?= base_url('template/plugins/datatables/jquery.dataTables.min.js')?>"></script>
-<script src="<?= base_url('template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')?>"></script>
-<script src="<?= base_url('template/plugins/datatables-responsive/js/dataTables.responsive.min.js')?>"></script>
-<script src="<?= base_url('template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')?>"></script>
-<script src="<?= base_url('template/plugins/datatables-buttons/js/dataTables.buttons.min.js')?>"></script>
-<script src="<?= base_url('template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')?>"></script>
-<script src="<?= base_url('template/plugins/jszip/jszip.min.js')?>"></script>
-<script src="<?= base_url('template/plugins/pdfmake/pdfmake.min.js')?>"></script>
-<script src="<?= base_url('template/plugins/pdfmake/vfs_fonts.js')?>"></script>
-<script src="<?= base_url('template/plugins/datatables-buttons/js/buttons.html5.min.js')?>"></script>
-<script src="<?= base_url('template/plugins/datatables-buttons/js/buttons.print.min.js')?>"></script>
-<script src="<?= base_url('template/plugins/datatables-buttons/js/buttons.colVis.min.js')?>"></script>
-<!-- AdminLTE App -->
-<script src="<?= base_url('template/dist/js/adminlte.min.js') ?>"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?= base_url('template/dist/js/demo.js') ?>"></script>
-<!-- Page specific script -->
-<script>
-    $(function () {
-        $("#example1").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
-</script>
+    <!-- Chart JS -->
+    <script src="<?= base_url('template/admin/js/plugin/chart.js/chart.min.js') ?>"></script>
 
-</body>
+    <!-- jQuery Sparkline -->
+    <script src="<?= base_url('template/admin/js/plugin/jquery.sparkline/jquery.sparkline.min.js') ?>"></script>
+
+    <!-- Chart Circle -->
+    <script src="<?= base_url('template/admin/js/plugin/chart-circle/circles.min.js') ?>"></script>
+
+    <!-- Datatables -->
+    <script src="<?= base_url('template/admin/js/plugin/datatables/datatables.min.js') ?>"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="<?= base_url('template/admin/js/plugin/bootstrap-notify/bootstrap-notify.min.js') ?>"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="<?= base_url('template/admin/js/plugin/jsvectormap/jsvectormap.min.js') ?>"></script>
+    <script src="<?= base_url('template/admin/js/plugin/jsvectormap/world.js') ?>"></script>
+
+    <!-- Sweet Alert -->
+    <script src="<?= base_url('template/admin/js/plugin/sweetalert/sweetalert.min.js') ?>"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="<?= base_url('template/admin/js/kaiadmin.min.js') ?>"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="<?= base_url('template/admin/js/setting-demo.js') ?>"></script>
+    <script src="<?= base_url('template/admin/js/demo.js') ?>"></script>
+    <script>
+      $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#177dff",
+        fillColor: "rgba(23, 125, 255, 0.14)",
+      });
+
+      $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#f3545d",
+        fillColor: "rgba(243, 84, 93, .14)",
+      });
+
+      $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#ffa534",
+        fillColor: "rgba(255, 165, 52, .14)",
+      });
+    </script>
+  </body>
 </html>
