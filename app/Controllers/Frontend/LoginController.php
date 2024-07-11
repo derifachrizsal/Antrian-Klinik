@@ -4,49 +4,58 @@ namespace App\Controllers\Frontend;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
-
+use App\Models\UserModel;
 class LoginController extends BaseController
 {
     public function index()
     {
-        //include helper form
-        helper(['form']);
-        echo view('Frontend/part/login');
-    }
-    
-    public function auth()
-    {
-         $session = session();
-         $model = new UserModel();
-         $email = $this->request->getVar('email');
-         $password = $this->request->getVar('password');
-         $data = $model->where('email', $email)->first();
-         if($data){
-            $pass = $data['password'];
-            $verify_pass = password_verify($password, $pass);
-            if($verify_pass){
-                $ses_data = [
-                    'id'          =>$data['id'],
-                    'nama'         =>$data['nama'],
-                    'email'      =>$data['email'],
-                    'logged_in'  =>TRUE
-                ];
-                $session->set($ses_data);
-                return redirect()->to('/dashboard');
-            }else{
-                $session->setFlashdata('msg', 'Wrong Password');
-                return redirect()->to('/login');
-            }
-        }else{
-            $session->setFlashdata('msg', 'Email not Found');
-            return redirect()->to('/login');
-        }
-    }
+        // validasi 
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'id_user'  =>'required',
+            'nama' => 'required',
+            'password' => 'required',
+        ]);
+        $isDataValid = $validation->withRequest($this->request)->run();
 
-    public function logout()
+        // valid ?
+        if (!empty($this->request->getPost())) {
+            if ($isDataValid){
+                $pasien = new PasienModel();
+                $pasien->insert([
+                    'id_user' => $this->request->getPost('id_user'),
+                    'username' => $this->request->getPost('username'),
+                    'password' => $this->request->getPost('password'),
+                ]);
+
+                return redirect('login');
+            }
+        }
+        echo view('Frontend/login');
+    }
+    public function register()
     {
-        $session = session();
-        $session->destory();
-        return redirect()->to('/login');
+        // validasi 
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+        $isDataValid = $validation->withRequest($this->request)->run();
+
+        // valid ?
+        if (!empty($this->request->getPost())) {
+            if ($isDataValid){
+                $user = new UserModel();
+                $user->insert([
+                    'username' => $this->request->getPost('username'),
+                    'password' => $this->request->getPost('password'),
+                ]);
+
+                return redirect('login');
+            }
+        }
+        echo view('Frontend/login');
     }
 }
+

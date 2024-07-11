@@ -5,11 +5,12 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class UserModel extends Model {
-    protected $table = 'users';
+    protected $table = 'tbl_user';
+    protected $primaryKey   = 'id_user';
+
+    protected $useAutoIncrement = true;
     protected $allowedFields = [
-        'nama',
-        'email',
+        'username',
         'password',
-        'created_at',
     ];
 }
