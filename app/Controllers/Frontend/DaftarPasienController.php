@@ -4,14 +4,19 @@ namespace App\Controllers\Frontend;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+
 use App\Models\PasienModel;
-class DataPasienController extends BaseController
+
+class DaftarPasienController extends BaseController
 {
     public function index()
     {
         $data = array();
         $session = session();
+        $pasien = new PasienModel();
+        
         $data['id_user'] = $session->get('id');
+        $data['pasien'] = $pasien->where("id_user", $data['id_user'])->get()->getResultArray();
 
         // validasi 
         $validation = \Config\Services::validation();
@@ -59,9 +64,11 @@ class DataPasienController extends BaseController
                     'id_user' => $this->request->getPost('id_user'),
                 ]);
 
-                return redirect('daftarpasien');
+                return redirect('daftar_pasien');
             }
         }
-        echo view('Frontend/datapasien', $data);
+        echo view('Frontend/part/header');
+        echo view('Frontend/daftar_pasien', $data);
+        echo view('Frontend/part/footer');
     }
 }

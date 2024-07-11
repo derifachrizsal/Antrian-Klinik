@@ -105,11 +105,11 @@
     <input type="checkbox" id="check">
     <div class="login form">
       <header>Login</header>
-      <form action="#">
-        <input type="text"  placeholder="Enter your email">
-        <input type="password" placeholder="Enter your password">
+      <form action="<?= base_url('login/login') ?>" method="post">
+        <input type="text" name="username" placeholder="Enter your username">
+        <input type="password" name="password" placeholder="Enter your password">
         <a href="#">Forgot password?</a>
-        <input type="button" class="button" value="Login">
+        <input type="submit" class="button" value="Login">
       </form>
       <div class="signup">
         <span class="signup">Don't have an account?
@@ -120,7 +120,7 @@
     <div class="registration form">
       <header>Signup</header>
       <form action="<?= base_url('login/register') ?>" method="post">
-        <input type="text" name="username" placeholder="Enter your email">
+        <input type="text" name="username" placeholder="Enter your username">
         <input type="password" name="password" placeholder="Create a password">
         <input type="password" name="confirmpassword" placeholder="Confirm your password">
         <input type="submit" class="button" value="Signup">

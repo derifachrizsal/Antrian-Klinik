@@ -26,5 +26,6 @@ class PasienModel extends Model
         'pendidikan_terakhir',
         'no_bpjs',
         'nik',
+        'id_user'
     ];
 }

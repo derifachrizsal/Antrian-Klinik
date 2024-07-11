@@ -64,6 +64,20 @@
 							<span class="badge badge-success"></span>
 						</a>
 					</li>
+					<li class="nav-item <?php if (count(explode('/', uri_string())) > 1 && explode('/', uri_string())[1] == 'pasien') echo 'active'; ?>">
+						<a href="<?= base_url('adm/pasien') ?>">
+							<i class="fas fa-desktop"></i>
+							<p>Pasien</p>
+							<span class="badge badge-success"></span>
+						</a>
+					</li>
+					<li class="nav-item <?php if (count(explode('/', uri_string())) > 1 && explode('/', uri_string())[1] == 'user') echo 'active'; ?>">
+						<a href="<?= base_url('adm/user') ?>">
+							<i class="fas fa-desktop"></i>
+							<p>User</p>
+							<span class="badge badge-success"></span>
+						</a>
+					</li>
 				</ul>
 			</div>
         </div>

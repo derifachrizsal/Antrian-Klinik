@@ -1,5 +1,5 @@
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+<!-- Spinner Start -->
+<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
         </div>
@@ -36,35 +36,51 @@
         </div>
     </nav>
     <!-- Navbar End -->
-
-    <!-- Service Start -->
-    <div class="container-xxl py-5">
+<!-- Service Start -->
+<div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1>Pengguna Akun</h1>
+                <p class="d-inline-block border rounded-pill py-1 px-4">Services</p>
+                <h1>Pilih Poli</h1>
             </div>
             <div class="row g-4">
-                <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item bg-light rounded h-100 p-5">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-heartbeat text-primary fs-4"></i>
+                            <i class="fa fa-hospital text-primary fs-4"></i>
                         </div>
-                        <h4 class="mb-3">Pasien Baru (Belum Pernah Berkunjung)</h4>
-                        <a class="btn" href="<?= base_url('/datapasien') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
+                        <h4 class="mb-3">Poli Umum</h4>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item bg-light rounded h-100 p-5">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-x-ray text-primary fs-4"></i>
+                            <i class="fa fa-tooth text-primary fs-4"></i>
                         </div>
-                        <h4 class="mb-3">Pasien Lama (Sudah Pernah Berkunjung)</h4>
-                        <a class="btn" href="<?= base_url('/daftarpasien') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
+                        <h4 class="mb-3">Poli Gigi</h4>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fa fa-heart text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Poli Anak</h4>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fa fa-dna text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Poli Kandungan</h4>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Service End -->
-
- 

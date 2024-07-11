@@ -9,31 +9,11 @@ class LoginController extends BaseController
 {
     public function index()
     {
-        // validasi 
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'id_user'  =>'required',
-            'nama' => 'required',
-            'password' => 'required',
-        ]);
-        $isDataValid = $validation->withRequest($this->request)->run();
-
-        // valid ?
-        if (!empty($this->request->getPost())) {
-            if ($isDataValid){
-                $pasien = new PasienModel();
-                $pasien->insert([
-                    'id_user' => $this->request->getPost('id_user'),
-                    'username' => $this->request->getPost('username'),
-                    'password' => $this->request->getPost('password'),
-                ]);
-
-                return redirect('login');
-            }
-        }
-        echo view('Frontend/login');
+        $data = array();
+        echo view('Frontend/login', $data);
     }
-    public function register()
+
+    public function login()
     {
         // validasi 
         $validation = \Config\Services::validation();
@@ -45,17 +25,68 @@ class LoginController extends BaseController
 
         // valid ?
         if (!empty($this->request->getPost())) {
-            if ($isDataValid){
-                $user = new UserModel();
-                $user->insert([
-                    'username' => $this->request->getPost('username'),
-                    'password' => $this->request->getPost('password'),
-                ]);
 
-                return redirect('login');
+            $user = new UserModel();
+
+            $active_user = $user->where('username', $this->request->getPost('username'))->first();
+
+            if (!empty($active_user)){
+                if ($isDataValid){
+                    $session = session();
+                    $pass = $active_user['password'];
+                    $verify_pass = password_verify($this->request->getPost('password'), $pass);
+                    if($verify_pass){
+                        $ses_data = [
+                            'id' => $active_user['id_user'],
+                            'username' => $active_user['username'],
+                            'logged_in'  =>TRUE
+                        ];
+                        $session->set($ses_data);
+                    }
+                    return redirect('/');
+                } else {
+                    return redirect('login');
+                }
             }
         }
         echo view('Frontend/login');
+    }
+
+    public function register()
+    {
+        // validasi 
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'username' => 'required',
+            'password' => 'required',
+            'confirmpassword' => 'required',
+        ]);
+        $isDataValid = $validation->withRequest($this->request)->run();
+
+        // valid ?
+        if (!empty($this->request->getPost())) {
+            if ($isDataValid){
+                if ($this->request->getPost('password') == $this->request->getPost('confirmpassword')) {
+                    $user = new UserModel();
+                    $user->insert([
+                        'username' => $this->request->getPost('username'),
+                        'password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
+                    ]);
+
+                    return redirect('login');
+                } else {
+                    return redirect('login');
+                }
+            }
+        }
+        echo view('Frontend/login');
+    }
+
+    public function logout()
+    {
+        $session = session();
+        $session->destroy();
+        return redirect('/');
     }
 }
 

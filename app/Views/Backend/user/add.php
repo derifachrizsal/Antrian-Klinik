@@ -43,9 +43,9 @@
                     </div>
                   </div>
                   <div class="form-group form-inline">
-                    <label for="inlineinput" class="col-md-3 col-form-label" >Nama user</label>
+                    <label for="inlineinput" class="col-md-3 col-form-label" >Password</label>
                     <div class="col-md-12 p-0">
-                      <input type="password" class="form-control input-full" id="inlineinput" placeholder="Masukan Nama" name="password" required />
+                      <input type="password" class="form-control input-full" id="inlineinput" placeholder="Masukan Password" name="password" required />
                     </div>
                   </div>
                 </div>

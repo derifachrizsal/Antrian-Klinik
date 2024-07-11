@@ -190,6 +190,7 @@
         <header>Registration</header>
 
         <form action="" method="post">
+            <input type="hidden" name="id_user" value="<?= $id_user ?>">
             <div class="form first">
                 <div class="details personal">
                     <span class="title">Personal Details</span>
@@ -204,8 +205,8 @@
                             <label>Jenis Kelamin</label>
                             <select name="jeniskelamin" required>
                                 <option disabled selected>Pilih Salah Satu</option>
-                                <option value="Laki-Laki" >Laki-Laki</option>
-                                <option value="Perempuan" >Perempuan</option>
+                                <option value="L" >Laki-Laki</option>
+                                <option value="P" >Perempuan</option>
                             </select>
                         </div>
 
@@ -318,22 +319,10 @@
     <script src="script.js"></script>
     <script>
         const form = document.querySelector("form"),
-        nextBtn = form.querySelector(".nextBtn"),
         backBtn = form.querySelector(".backBtn"),
         allInput = form.querySelectorAll(".first input");
 
-
-        nextBtn.addEventListener("click", ()=> {
-            allInput.forEach(input => {
-                if(input.value != ""){
-                    form.classList.add('secActive');
-                }else{
-                    form.classList.remove('secActive');
-                }
-            })
-        })
-
-        backBtn.addEventListener("click", () => form.classList.remove('secActive'));
+        backBtn.addEventListener("click", () => window.location.href = "<?= base_url('/daftar') ?>");
     </script>
 </body>
 </html>

@@ -19,7 +19,6 @@ class UserController extends BaseController
     public function tambah() 
     {
         $data = array();
-        $data['list_poli'] = $this->list_poli();
 
         // validasi 
         $validation = \Config\Services::validation();
@@ -47,9 +46,8 @@ class UserController extends BaseController
     {
         // Artikel yang di edit
         $data = array();
-        $dokter = new UserModel();
-        $data['dokter'] = $dokter->where('id_dokter', $id)->first();        
-        $data['list_poli'] = $this->list_poli();
+        $user = new UserModel();
+        $data['user'] = $user->where('id_user', $id)->first();
         
         // validasi 
         $validation = \Config\Services::validation();
@@ -61,22 +59,22 @@ class UserController extends BaseController
 
         // valid ?
         if (!empty($this->request->getPost()) && $isDataValid) {
-            $dokter->update($id, [
+            $user->update($id, [
                 'username' => $this->request->getPost('username'),
                 'password' => $this->request->getPost('password'),
             ]);
 
-            return redirect('adm/dokter');
+            return redirect('adm/user');
         }
 
-        return view('Backend/dokter/edit', $data);
+        return view('Backend/user/edit', $data);
     }
 
     public function delete($id) 
     {
-        $dokter = new UserModel();
-        $dokter->delete($id);
-        if ($dokter) {
+        $user = new UserModel();
+        $user->delete($id);
+        if ($user) {
             echo json_encode([
                 'status' => 'success',
                 'code' => 200,
@@ -90,14 +88,5 @@ class UserController extends BaseController
             ]);
         }
         // return redirect('adm/dokter');
-    }
-
-    public function list_poli(){
-        return array(
-            ['value' => 'umum', 'nama' => 'Umum'],
-            ['value' => 'gigi', 'nama' => 'Gigi'],
-            ['value' => 'anak', 'nama' => 'Anak'],
-            ['value' => 'kandungan', 'nama' => 'Kandungan'],
-        );
     }
 }

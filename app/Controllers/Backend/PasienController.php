@@ -12,74 +12,127 @@ class PasienController extends BaseController
     public function index()
     {
         $pasien = new PasienModel();
-        $data['kat'] = $pasien->findAll();
-        echo view('Backend/part/header');
-        echo view('Backend/part/top_menu', $data);
-        echo view('Backend/part/side_menu', $data);
-        echo view('Backend/pasien', $data);
-        echo view('Backend/part/footer');
+        $data['pasien'] = $pasien->findAll();
+        return view('Backend/pasien/index', $data);
     }
 
-    // Tambah Data
     public function tambah() 
     {
+        $data = array();
+        $data['list_poli'] = $this->list_poli();
+
         // validasi 
         $validation = \Config\Services::validation();
-        $validation->setRules(['nama_pasien' => 'required']);
+        $validation->setRules([
+            'nama_dokter' => 'required',
+            'jk_dokter' => 'required',
+            'alamat' => 'required',
+            'np_dokter' => 'required',
+            'poli_dokter' => 'required'
+        ]);
         $isDataValid = $validation->withRequest($this->request)->run();
-        
+
         // valid ?
-        if ($isDataValid) {
-            $kat = new PasienModel();
-            $kat->insert([
-                'nama_pasien' => $this->request->getPost('nama_pasien')
+        if (!empty($this->request->getPost()) && $isDataValid) {
+            $dokter = new DokterModel();
+            $dokter->insert([
+                'nama' => $this->request->getPost('nama_dokter'),
+                'jenis_kelamin' => $this->request->getPost('jk_dokter'),
+                'alamat' => $this->request->getPost('alamat'),
+                'no_telp' => $this->request->getPost('np_dokter'),
+                'poli' => $this->request->getPost('poli_dokter')
             ]);
 
-            return redirect('pasien');
+            return redirect('adm/dokter');
         }
 
-        // Menampilkan Halaman Tambah Data
-        echo view('Backend/part/header');
-        echo view('Backend/part/top_menu');
-        echo view('Backend/part/side_menu');
-        echo view('Backend/pasien_add');
-        echo view('Backend/part/footer');
+        return view('Backend/dokter/add', $data);
     }
 
-    // Edit Data
     public function edit($id) 
     {
         // Artikel yang di edit
-        $kat = new PasienModel();
-        $data['kategori'] = $kat->where('id_kategori', $id)->first();
-
+        $data = array();
+        $pasien = new PasienModel();
+        $data['pasien'] = $pasien->where('id_pasien', $id)->first();
+        
         // validasi 
         $validation = \Config\Services::validation();
-        $validation->setRules(['nama_kategori' => 'required']);
+        $validation->setRules([
+            'nama'         =>'required',
+            'jeniskelamin' => 'required',
+            'Tempatlahir' => 'required',
+            'tanggallahir' => 'required',
+            'goldar' => 'required',
+            'alamatlengkap' => 'required',
+            'kelurahan' => 'required',
+            'kecamatan' => 'required',
+            'kodepos' => 'required',
+            'notelp' => 'required',
+            'email' => 'required',
+            'pendidikanterakhir' => 'required',
+            'pekerjaan' => 'required',
+            'NIK' => 'required',
+            'nobpjs' => 'required',
+        ]);
         $isDataValid = $validation->withRequest($this->request)->run();
-
+        
         // valid ?
-        if ($isDataValid) {
-            $kat->update($id, [
-                'nama_kategori' => $this->request->getPost('nama_kategori')
-            ]);
+        if (!empty($this->request->getPost())) {
+            // print_r($isDataValid);die;
+            if ($isDataValid){
+                // echo '<pre>';print_r($this->request->getPost());die;
+                $pasien->update($id, [
+                    'nama' => $this->request->getPost('nama'),
+                    'jenis_kelamin' => $this->request->getPost('jeniskelamin'),
+                    'gol_darah' => $this->request->getPost('goldar'),
+                    'tempat_lahir' => $this->request->getPost('Tempatlahir'),
+                    'tanggal_lahir' => $this->request->getPost('tanggallahir'),
+                    'alamat_lengkap' => $this->request->getPost('alamatlengkap'),
+                    'no_telp' => $this->request->getPost('notelp'),
+                    'email' => $this->request->getPost('email'),
+                    'pekerjaan' => $this->request->getPost('pekerjaan'),
+                    'no_bpjs' => $this->request->getPost('nobpjs'),
+                    'nik' => $this->request->getPost('NIK'),
+                    'kelurahan' => $this->request->getPost('kelurahan'),
+                    'kecamatan' => $this->request->getPost('kecamatan'),
+                    'kode_pos' => $this->request->getPost('kodepos'),
+                    'pendidikan_terakhir' => $this->request->getPost('pendidikanterakhir'),
+                ]);
 
-            return redirect('kategori');
+                return redirect('adm/pasien');
+            }
         }
 
-        // Menampilkan Halaman Edit Data
-        echo view('part_adm/header');
-        echo view('part_adm/top_menu');
-        echo view('part_adm/side_menu');
-        echo view('kategori_edit', $data);
-        echo view('part_adm/footer');
+        return view('Backend/pasien/edit', $data);
     }
 
-    // Hapus Data
     public function delete($id) 
     {
-        $kat = new KategoriModel();
-        $kat->delete($id);
-        return redirect('kategori');
+        $dokter = new DokterModel();
+        $dokter->delete($id);
+        if ($dokter) {
+            echo json_encode([
+                'status' => 'success',
+                'code' => 200,
+                'message' => 'Data Berhasil Dihapus'
+            ]);
+        } else {
+            echo json_encode([
+                'status' => 'error',
+                'code' => 200,
+                'message' => 'Data Gagal Dihapus'
+            ]);
+        }
+        // return redirect('adm/dokter');
+    }
+
+    public function list_poli(){
+        return array(
+            ['value' => 'umum', 'nama' => 'Umum'],
+            ['value' => 'gigi', 'nama' => 'Gigi'],
+            ['value' => 'anak', 'nama' => 'Anak'],
+            ['value' => 'kandungan', 'nama' => 'Kandungan'],
+        );
     }
 }

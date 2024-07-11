@@ -37,38 +37,30 @@
     </nav>
     <!-- Navbar End -->
 
-    <!-- Service Start -->
+    <!-- Appointment Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1>Selamat Datang</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-heartbeat text-primary fs-4"></i>
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="d-inline-block border rounded-pill py-1 px-4">Appointment</p>
+                    <h1 class="mb-4">Mohon Pilih Pasien yang akan Mendaftar</h1>
+                    <div class="bg-light rounded d-flex align-items-center p-5 mb-4">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
+                            <i class="fa fa-id-card text-primary"></i>
                         </div>
-                        <h4 class="mb-3">Pendaftaran Online</h4>
-                        <p class="mb-4">Ambil Antrian</p>
-                        <a class="btn" href="<?= base_url('/daftar') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
+                        <div class="ms-4">
+                            <div class="col-12 col-sm-12">
+                                <select class="form-select border-0" style="height: 55px;">
+                                    <option selected>Pilih Pasien</option>
+                                    <?php foreach ($pasien as $key => $pasienlist) { ?>
+                                        <option value="<?= $pasienlist['id_pasien'] ?>"><?= $pasienlist['nama'] ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-x-ray text-primary fs-4"></i>
-                        </div>
-                        <h4 class="mb-3">Monitoring Antrian</h4>
-                        <p class="mb-4">Lihat List Antrian</p>
-                        <a class="btn" href="<?= base_url('/poli') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="bg-light rounded h-100 d-flex align-items-center p-5">
                         <form>
                             <div class="row g-3">
@@ -112,7 +104,40 @@
                             </div>
                         </form>
                     </div>
-                </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Appointment End -->
+
+    <!-- Service Start -->
+    <!-- <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1>Pengguna Akun</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fa fa-heartbeat text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Pasien Baru (Belum Pernah Berkunjung)</h4>
+                        <a class="btn" href="<?= base_url('/datapasien') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fa fa-x-ray text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Pasien Lama (Sudah Pernah Berkunjung)</h4>
+                        <a class="btn" href="<?= base_url('/') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
     <!-- Service End -->
 
  
