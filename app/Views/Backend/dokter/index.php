@@ -58,7 +58,10 @@
 										<td><?= $dokterlist['poli'] ?></td>
 										<td>
 											<div class="form-button-action">
-												<a href="<?= base_url('adm/dokter/'.$dokterlist['id_dokter'].'/edit') ?>" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+												<a href="<?= base_url('adm/dokter/'.$dokterlist['id_dokter'].'/detail') ?>" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Detail Dokter">
+													<i class="fa fa-file-alt"></i>
+												</a>
+												<a href="<?= base_url('adm/dokter/'.$dokterlist['id_dokter'].'/edit') ?>" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Dokter">
 													<i class="fa fa-edit"></i>
 												</a>
 												<button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger delete_button" data-original-title="Remove" data-href="<?= base_url('adm/dokter/'.$dokterlist['id_dokter'].'/delete') ?>">

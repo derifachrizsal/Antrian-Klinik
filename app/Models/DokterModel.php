@@ -16,5 +16,6 @@ class DokterModel extends Model
         'alamat',
         'jenis_kelamin',
         'no_telp',
+        'image_dokter'
     ];
 }

@@ -36,35 +36,42 @@
         </div>
     </nav>
     <!-- Navbar End -->
-
     <!-- Service Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1>Pengguna Akun</h1>
+            <div class="text-center mx-auto mb-2 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4">ANTREAN PENDAFTARAN PASIEN</p>
+            </div>
+            <div class="text-center mx-auto mb-3 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4">POLI UMUM</p>
             </div>
             <div class="row g-4">
-                <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-9 col-md-9 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-heartbeat text-primary fs-4"></i>
-                        </div>
-                        <h4 class="mb-3">Pasien Baru (Belum Pernah Berkunjung)</h4>
-                        <a class="btn" href="<?= base_url('/datapasien') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
+                        <h4 class="mb-3 text-center">Antrean Saat Ini</h4>
+                        <h1 class="mb-3 text-center" style="font-size: 6rem">A23</h1>
+                        <table class="col-12 text-center">
+                            <tr style="border-bottom: 1px solid black;">
+                                <td style="border-right: 1px solid black;"><p>Nama Pasien</p></td>
+                                <td><p>Nama Dokter</p></td>
+                            </tr>
+                            <tr>
+                                <td style="border-right: 1px solid black;"><p class="mt-4">Frans</p></td>
+                                <td><p class="mt-4">Dr. Lucky</p></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-x-ray text-primary fs-4"></i>
-                        </div>
-                        <h4 class="mb-3">Pasien Lama (Sudah Pernah Berkunjung)</h4>
-                        <a class="btn" href="<?= base_url('/daftar/daftarpasien') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
+                <div class="col-lg-3 col-md-3 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5" style="align-items: center;">
+                        <h4 class="mb-3 text-center">Total Antrian</h4>
+                        <h2 class="mb-3 text-center" style="font-size: 3rem">23 / 50 Antrean</h2>
                     </div>
                 </div>
+            </div>
+            <div class="text-left mt-2">
+                <a class="btn btn-primary" href="<?= base_url('/poli') ?>"><i class="fa fa-arrow-left text-white me-3"></i>Kembali</a>
             </div>
         </div>
     </div>
     <!-- Service End -->
-
- 

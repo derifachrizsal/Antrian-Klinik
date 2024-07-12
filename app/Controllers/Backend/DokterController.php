@@ -28,19 +28,33 @@ class DokterController extends BaseController
             'jk_dokter' => 'required',
             'alamat' => 'required',
             'np_dokter' => 'required',
-            'poli_dokter' => 'required'
+            'poli_dokter' => 'required',
+            'image' => [  
+                'label' => 'Image File',  
+                'rules' => 'uploaded[image]'  
+                    . '|is_image[image]'  
+                    . '|mime_in[image,image/jpg,image/jpeg,image/gif,image/png,image/webp]'  
+                    . '|max_size[image,100000]'  
+                    . '|max_dims[image,4000,4000]',  
+            ],  
         ]);
         $isDataValid = $validation->withRequest($this->request)->run();
 
         // valid ?
         if (!empty($this->request->getPost()) && $isDataValid) {
+
+            $image = $this->request->getFile('image');
+            $filename = $image->getRandomName();
+            $image->move(ROOTPATH . 'public/uploads', $filename);
+
             $dokter = new DokterModel();
             $dokter->insert([
                 'nama' => $this->request->getPost('nama_dokter'),
                 'jenis_kelamin' => $this->request->getPost('jk_dokter'),
                 'alamat' => $this->request->getPost('alamat'),
                 'no_telp' => $this->request->getPost('np_dokter'),
-                'poli' => $this->request->getPost('poli_dokter')
+                'poli' => $this->request->getPost('poli_dokter'),
+                'image_dokter' => $image->getName()
             ]);
 
             return redirect('adm/dokter');
@@ -101,7 +115,20 @@ class DokterController extends BaseController
                 'message' => 'Data Gagal Dihapus'
             ]);
         }
-        // return redirect('adm/dokter');
+    }
+
+    public function detail($id) 
+    {
+        // Artikel yang di edit
+        $data = array();
+        $dokter = new DokterModel();
+        $data['dokter'] = $dokter->where('id_dokter', $id)->first();
+
+        if (!empty($data['dokter'])) {
+            return view('Backend/dokter/detail', $data);
+        } else {
+            return redirect('adm/dokter');
+        }
     }
 
     public function list_poli(){

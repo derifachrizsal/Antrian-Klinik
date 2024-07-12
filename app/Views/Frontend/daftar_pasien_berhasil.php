@@ -41,65 +41,43 @@
     </nav>
     <!-- Navbar End -->
 
-    <!-- Appointment Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <form action="<?= base_url('/daftar/daftarpasien') ?>" method="post">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <p class="d-inline-block border rounded-pill py-1 px-4">Appointment</p>
-                    <h1 class="mb-4">Mohon Pilih Pasien yang akan Mendaftar</h1>
-                    <div class="bg-light rounded d-flex align-items-center p-5 mb-4">
-                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
-                            <i class="fa fa-id-card text-primary"></i>
-                        </div>
-                        <div class="ms-4">
-                            <div class="col-12 col-sm-12">
-                                <select name="id_pasien" class="form-select border-0" style="height: 55px;">
-                                    <option value="">Pilih Pasien</option>
-                                    <?php foreach ($pasien as $key => $pasienlist) { ?>
-                                        <option value="<?= $pasienlist['id_pasien'] ?>"><?= $pasienlist['nama'] ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                        </div>
+            <div class="text-center mx-auto mb-2 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4">ANTREAN ANDA BERHASIL</p>
+            </div>
+            <div class="text-center mx-auto mb-3 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4">POLI UMUM</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-9 col-md-9 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <h4 class="mb-3 text-center">Nomor Antrian Anda</h4>
+                        <h1 class="mb-3 text-center" style="font-size: 6rem"><?= $nomor ?></h1>
+                        <table class="col-12 text-center">
+                            <tr style="border-bottom: 1px solid black;">
+                                <td style="border-right: 1px solid black;"><p>Nama Pasien</p></td>
+                                <td><p>Nama Dokter</p></td>
+                            </tr>
+                            <tr>
+                                <td style="border-right: 1px solid black;"><p class="mt-4"><?= $pasien_terdaftar['nama'] ?></p></td>
+                                <td><p class="mt-4"><?= $dokter_terdaftar['nama'] ?></p></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="bg-light rounded h-100 d-flex align-items-center p-5">
-                        <div class="row g-3">
-                            <div class="col-12 col-sm-12">
-                                <select id="poli" name="poli" class="form-select border-0" style="height: 55px;">
-                                    <option value="">-- Pilih Poli --</option>
-                                    <?php foreach ($list_poli as $key => $value) { ?>
-                                        <option value='<?= $value['value'] ?>'><?= $value['nama'] ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                            <div class="col-12 col-sm-12">
-                                <select id="dokter" name="id_dokter" class="form-select border-0" style="height: 55px;">
-                                    <option selected>-- Pilih Dokter --</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-sm-12">
-                                <div class="date" id="date" data-target-input="nearest">
-                                    <input type="text" id="tanggal" name="tanggal" class="form-control border-0 datetimepicker-input" placeholder="Pilih Tanggal" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
-                                </div>
-                            </div>
-                            <!-- <div class="col-12">
-                                <textarea class="form-control border-0" rows="5" placeholder="Describe your problem"></textarea>
-                            </div> -->
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Book Appointment</button>
-                            </div>
-                        </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5" style="align-items: center;">
+                        <h4 class="mb-3 text-center">Total Antrian</h4>
+                        <h2 class="mb-3 text-center" style="font-size: 3rem"><?= $nomor_saat_ini ?> / <?= $nomor ?> Antrean</h2>
                     </div>
                 </div>
             </div>
-            </form>
+            <div class="text-left mt-2">
+                <a class="btn btn-primary" href="<?= base_url('/poli') ?>"><i class="fa fa-arrow-left text-white me-3"></i>Kembali</a>
+            </div>
         </div>
     </div>
-    <!-- Appointment End -->
  
  <?= $this->endSection() ?>
 

@@ -32,7 +32,7 @@
           <div class="card-header">
             <div class="card-title">Tambah Dokter Baru</div>
           </div>
-          <form action="" method="post">
+          <form action="" method="post" enctype="multipart/form-data">
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12 col-lg-12">
@@ -68,6 +68,10 @@
                         <option value='<?= $value['value'] ?>'><?= $value['nama'] ?></option>
                       <?php } ?>
                     </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" name="image" class="form-control">
                   </div>
                 </div>
               </div>

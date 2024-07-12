@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 
 use App\Models\PasienModel;
+use App\Models\UserModel;
 
 class PasienController extends BaseController
 {
@@ -79,9 +80,7 @@ class PasienController extends BaseController
         
         // valid ?
         if (!empty($this->request->getPost())) {
-            // print_r($isDataValid);die;
             if ($isDataValid){
-                // echo '<pre>';print_r($this->request->getPost());die;
                 $pasien->update($id, [
                     'nama' => $this->request->getPost('nama'),
                     'jenis_kelamin' => $this->request->getPost('jeniskelamin'),
@@ -124,8 +123,25 @@ class PasienController extends BaseController
                 'message' => 'Data Gagal Dihapus'
             ]);
         }
-        // return redirect('adm/dokter');
     }
+
+    public function detail($id) 
+    {
+        // Artikel yang di edit
+        $data = array();
+        $pasien = new PasienModel();
+        $user = new UserModel();
+        $data['pasien'] = $pasien->where('id_pasien', $id)->first();
+        if (!empty($data['pasien'])) {
+            $data['user'] = $user->where('id_user', $data['pasien']['id_user'])->first();
+
+            return view('Backend/pasien/detail', $data);
+        } else {
+            return redirect('adm/pasien');
+        }
+        
+    }
+        
 
     public function list_poli(){
         return array(

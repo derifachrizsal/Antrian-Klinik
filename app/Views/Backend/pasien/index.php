@@ -55,6 +55,9 @@
 										<td><?= $pasienlist['nama'] ?></td>
 										<td>
 											<div class="form-button-action">
+												<a href="<?= base_url('adm/pasien/'.$pasienlist['id_pasien'].'/detail') ?>" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Detail Dokter">
+													<i class="fa fa-file-alt"></i>
+												</a>
 												<a href="<?= base_url('adm/pasien/'.$pasienlist['id_pasien'].'/edit') ?>" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
 													<i class="fa fa-edit"></i>
 												</a>
