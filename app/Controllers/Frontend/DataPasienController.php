@@ -59,7 +59,7 @@ class DataPasienController extends BaseController
                     'id_user' => $this->request->getPost('id_user'),
                 ]);
 
-                return redirect('daftarpasien');
+                return redirect('daftar/daftarpasien');
             }
         }
         echo view('Frontend/datapasien', $data);
