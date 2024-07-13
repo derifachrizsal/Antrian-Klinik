@@ -18,21 +18,12 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="<?= base_url('/') ?>" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Service</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <a href="feature.html" class="dropdown-item">Feature</a>
-                        <a href="team.html" class="dropdown-item">Our Doctor</a>
-                        <a href="appointment.html" class="dropdown-item">Appointment</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
             </div>
-            <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Appointment<i class="fa fa-arrow-right ms-3"></i></a>
+            <?php if (session()->get('logged_in') != 1) { ?>
+                <a href="<?= base_url('/login') ?>" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
+            <?php } else { ?>
+                <a href="<?= base_url('/login/logout') ?>" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Logout<i class="fa fa-arrow-right ms-3"></i></a>
+            <?php } ?>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -50,7 +41,7 @@
                             <i class="fa fa-hospital text-primary fs-4"></i>
                         </div>
                         <h4 class="mb-3">Poli Umum</h4>
-                        <a class="btn" href="<?= base_url('/antrian') ?>"><i class="fa fa-plus text-primary me-3"></i>Lihat</a>
+                        <a class="btn" href="<?= base_url('/antrian/umum') ?>"><i class="fa fa-plus text-primary me-3"></i>Lihat</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -59,7 +50,7 @@
                             <i class="fa fa-tooth text-primary fs-4"></i>
                         </div>
                         <h4 class="mb-3">Poli Gigi</h4>
-                        <a class="btn" href="<?= base_url('/antrian') ?>"><i class="fa fa-plus text-primary me-3"></i>Lihat</a>
+                        <a class="btn" href="<?= base_url('/antrian/gigi') ?>"><i class="fa fa-plus text-primary me-3"></i>Lihat</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -68,7 +59,7 @@
                             <i class="fa fa-heart text-primary fs-4"></i>
                         </div>
                         <h4 class="mb-3">Poli Anak</h4>
-                        <a class="btn" href="<?= base_url('/antrian') ?>"><i class="fa fa-plus text-primary me-3"></i>Lihat</a>
+                        <a class="btn" href="<?= base_url('/antrian/anak') ?>"><i class="fa fa-plus text-primary me-3"></i>Lihat</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -77,7 +68,7 @@
                             <i class="fa fa-dna text-primary fs-4"></i>
                         </div>
                         <h4 class="mb-3">Poli Kandungan</h4>
-                        <a class="btn" href="<?= base_url('/antrian') ?>"><i class="fa fa-plus text-primary me-3"></i>Lihat</a>
+                        <a class="btn" href="<?= base_url('/antrian/kandungan') ?>"><i class="fa fa-plus text-primary me-3"></i>Lihat</a>
                     </div>
                 </div>
             </div>

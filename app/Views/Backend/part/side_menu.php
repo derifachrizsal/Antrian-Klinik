@@ -51,6 +51,13 @@
 							<span class="badge badge-success"></span>
 						</a>
 					</li>
+					<li class="nav-item <?php if (count(explode('/', uri_string())) > 1 && explode('/', uri_string())[1] == 'antrian') echo 'active'; ?>">
+						<a href="<?= base_url('adm/antrian') ?>">
+							<i class="fas fa-desktop"></i>
+							<p>Antrian</p>
+							<span class="badge badge-success"></span>
+						</a>
+					</li>
 					<li class="nav-section">
 						<span class="sidebar-mini-icon">
 							<i class="fa fa-ellipsis-h"></i>

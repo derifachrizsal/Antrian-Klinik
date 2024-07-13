@@ -11,123 +11,151 @@ class DokterController extends BaseController
 {
     public function index()
     {
-        $dokter = new DokterModel();
-        $data['dokter'] = $dokter->findAll();
-        return view('Backend/dokter/index', $data);
+        if (session()->get('is_admin') == 1) {
+            $dokter = new DokterModel();
+            $data['dokter'] = $dokter->findAll();
+            return view('Backend/dokter/index', $data);
+        } else {
+            return redirect('/');
+        }
+        
     }
 
     public function tambah() 
     {
-        $data = array();
-        $data['list_poli'] = $this->list_poli();
+        if (session()->get('is_admin') == 1) {
 
-        // validasi 
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'nama_dokter' => 'required',
-            'jk_dokter' => 'required',
-            'alamat' => 'required',
-            'np_dokter' => 'required',
-            'poli_dokter' => 'required',
-            'image' => [  
-                'label' => 'Image File',  
-                'rules' => 'uploaded[image]'  
-                    . '|is_image[image]'  
-                    . '|mime_in[image,image/jpg,image/jpeg,image/gif,image/png,image/webp]'  
-                    . '|max_size[image,100000]'  
-                    . '|max_dims[image,4000,4000]',  
-            ],  
-        ]);
-        $isDataValid = $validation->withRequest($this->request)->run();
+            $data = array();
+            $data['list_poli'] = $this->list_poli();
 
-        // valid ?
-        if (!empty($this->request->getPost()) && $isDataValid) {
-
-            $image = $this->request->getFile('image');
-            $filename = $image->getRandomName();
-            $image->move(ROOTPATH . 'public/uploads', $filename);
-
-            $dokter = new DokterModel();
-            $dokter->insert([
-                'nama' => $this->request->getPost('nama_dokter'),
-                'jenis_kelamin' => $this->request->getPost('jk_dokter'),
-                'alamat' => $this->request->getPost('alamat'),
-                'no_telp' => $this->request->getPost('np_dokter'),
-                'poli' => $this->request->getPost('poli_dokter'),
-                'image_dokter' => $image->getName()
+            // validasi 
+            $validation = \Config\Services::validation();
+            $validation->setRules([
+                'nama_dokter' => 'required',
+                'jk_dokter' => 'required',
+                'alamat' => 'required',
+                'np_dokter' => 'required',
+                'poli_dokter' => 'required',
+                'image' => [  
+                    'label' => 'Image File',  
+                    'rules' => 'uploaded[image]'  
+                        . '|is_image[image]'  
+                        . '|mime_in[image,image/jpg,image/jpeg,image/gif,image/png,image/webp]'  
+                        . '|max_size[image,100000]'  
+                        . '|max_dims[image,4000,4000]',  
+                ],  
             ]);
+            $isDataValid = $validation->withRequest($this->request)->run();
 
-            return redirect('adm/dokter');
+            // valid ?
+            if (!empty($this->request->getPost()) && $isDataValid) {
+
+                $image = $this->request->getFile('image');
+                $filename = $image->getRandomName();
+                $image->move(ROOTPATH . 'public/uploads', $filename);
+
+                $dokter = new DokterModel();
+                $dokter->insert([
+                    'nama' => $this->request->getPost('nama_dokter'),
+                    'jenis_kelamin' => $this->request->getPost('jk_dokter'),
+                    'alamat' => $this->request->getPost('alamat'),
+                    'no_telp' => $this->request->getPost('np_dokter'),
+                    'poli' => $this->request->getPost('poli_dokter'),
+                    'image_dokter' => $image->getName()
+                ]);
+
+                return redirect('adm/dokter');
+            }
+
+            return view('Backend/dokter/add', $data);
+
+        } else {
+            return redirect('/');
         }
-
-        return view('Backend/dokter/add', $data);
     }
 
     public function edit($id) 
     {
-        // Artikel yang di edit
-        $data = array();
-        $dokter = new DokterModel();
-        $data['dokter'] = $dokter->where('id_dokter', $id)->first();        
-        $data['list_poli'] = $this->list_poli();
-        
-        // validasi 
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'nama_dokter' => 'required',
-            'jk_dokter' => 'required',
-            'alamat' => 'required',
-            'np_dokter' => 'required',
-            'poli_dokter' => 'required'
-        ]);
-        $isDataValid = $validation->withRequest($this->request)->run();
+        if (session()->get('is_admin') == 1) {
 
-        // valid ?
-        if (!empty($this->request->getPost()) && $isDataValid) {
-            $dokter->update($id, [
-                'nama' => $this->request->getPost('nama_dokter'),
-                'jenis_kelamin' => $this->request->getPost('jk_dokter'),
-                'alamat' => $this->request->getPost('alamat'),
-                'no_telp' => $this->request->getPost('np_dokter'),
-                'poli' => $this->request->getPost('poli_dokter')
+            // Artikel yang di edit
+            $data = array();
+            $dokter = new DokterModel();
+            $data['dokter'] = $dokter->where('id_dokter', $id)->first();        
+            $data['list_poli'] = $this->list_poli();
+            
+            // validasi 
+            $validation = \Config\Services::validation();
+            $validation->setRules([
+                'nama_dokter' => 'required',
+                'jk_dokter' => 'required',
+                'alamat' => 'required',
+                'np_dokter' => 'required',
+                'poli_dokter' => 'required'
             ]);
+            $isDataValid = $validation->withRequest($this->request)->run();
 
-            return redirect('adm/dokter');
+            // valid ?
+            if (!empty($this->request->getPost()) && $isDataValid) {
+                $dokter->update($id, [
+                    'nama' => $this->request->getPost('nama_dokter'),
+                    'jenis_kelamin' => $this->request->getPost('jk_dokter'),
+                    'alamat' => $this->request->getPost('alamat'),
+                    'no_telp' => $this->request->getPost('np_dokter'),
+                    'poli' => $this->request->getPost('poli_dokter')
+                ]);
+
+                return redirect('adm/dokter');
+            }
+
+            return view('Backend/dokter/edit', $data);
+
+        } else {
+            return redirect('/');
         }
-
-        return view('Backend/dokter/edit', $data);
     }
 
     public function delete($id) 
     {
-        $dokter = new DokterModel();
-        $dokter->delete($id);
-        if ($dokter) {
-            echo json_encode([
-                'status' => 'success',
-                'code' => 200,
-                'message' => 'Data Berhasil Dihapus'
-            ]);
+        if (session()->get('is_admin') == 1) {
+
+            $dokter = new DokterModel();
+            $dokter->delete($id);
+            if ($dokter) {
+                echo json_encode([
+                    'status' => 'success',
+                    'code' => 200,
+                    'message' => 'Data Berhasil Dihapus'
+                ]);
+            } else {
+                echo json_encode([
+                    'status' => 'error',
+                    'code' => 200,
+                    'message' => 'Data Gagal Dihapus'
+                ]);
+            }
         } else {
-            echo json_encode([
-                'status' => 'error',
-                'code' => 200,
-                'message' => 'Data Gagal Dihapus'
-            ]);
+            return redirect('/');
         }
     }
 
     public function detail($id) 
     {
-        // Artikel yang di edit
-        $data = array();
-        $dokter = new DokterModel();
-        $data['dokter'] = $dokter->where('id_dokter', $id)->first();
+        if (session()->get('is_admin') == 1) {
 
-        if (!empty($data['dokter'])) {
-            return view('Backend/dokter/detail', $data);
+            // Artikel yang di edit
+            $data = array();
+            $dokter = new DokterModel();
+            $data['dokter'] = $dokter->where('id_dokter', $id)->first();
+
+            if (!empty($data['dokter'])) {
+                return view('Backend/dokter/detail', $data);
+            } else {
+                return redirect('adm/dokter');
+            }
+
         } else {
-            return redirect('adm/dokter');
+            return redirect('/');
         }
     }
 

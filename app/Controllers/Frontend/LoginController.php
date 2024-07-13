@@ -35,15 +35,24 @@ class LoginController extends BaseController
                     $session = session();
                     $pass = $active_user['password'];
                     $verify_pass = password_verify($this->request->getPost('password'), $pass);
+                    $is_admin = $active_user['is_admin'];
                     if($verify_pass){
                         $ses_data = [
                             'id' => $active_user['id_user'],
                             'username' => $active_user['username'],
-                            'logged_in'  =>TRUE
+                            'logged_in'  =>TRUE,
+                            'is_user' => !$is_admin,
+                            'is_admin' => $is_admin
                         ];
                         $session->set($ses_data);
                     }
-                    return redirect('/');
+
+                    if ($is_admin == 1) {
+                        return redirect('adm');
+                    } else{
+                        return redirect('daftar');
+                    }
+                    
                 } else {
                     return redirect('login');
                 }

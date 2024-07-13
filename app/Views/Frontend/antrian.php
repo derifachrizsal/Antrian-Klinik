@@ -1,3 +1,7 @@
+<?= $this->extend('Frontend/part/layout') ?>
+
+<?= $this->section('content') ?>
+    
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -18,21 +22,12 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="<?= base_url('/') ?>" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Service</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <a href="feature.html" class="dropdown-item">Feature</a>
-                        <a href="team.html" class="dropdown-item">Our Doctor</a>
-                        <a href="appointment.html" class="dropdown-item">Appointment</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
             </div>
-            <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Appointment<i class="fa fa-arrow-right ms-3"></i></a>
+            <?php if (session()->get('logged_in') != 1) { ?>
+                <a href="<?= base_url('/login') ?>" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
+            <?php } else { ?>
+                <a href="<?= base_url('/login/logout') ?>" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Logout<i class="fa fa-arrow-right ms-3"></i></a>
+            <?php } ?>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -49,15 +44,15 @@
                 <div class="col-lg-9 col-md-9 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item bg-light rounded h-100 p-5">
                         <h4 class="mb-3 text-center">Antrean Saat Ini</h4>
-                        <h1 class="mb-3 text-center" style="font-size: 6rem">A23</h1>
+                        <h1 class="mb-3 text-center" style="font-size: 6rem"><?= !empty($nomor_saat_ini) ? $nomor_saat_ini : "-" ?></h1>
                         <table class="col-12 text-center">
                             <tr style="border-bottom: 1px solid black;">
                                 <td style="border-right: 1px solid black;"><p>Nama Pasien</p></td>
                                 <td><p>Nama Dokter</p></td>
                             </tr>
                             <tr>
-                                <td style="border-right: 1px solid black;"><p class="mt-4">Frans</p></td>
-                                <td><p class="mt-4">Dr. Lucky</p></td>
+                                <td style="border-right: 1px solid black;"><p class="mt-4"><?= !empty($pasien_terdaftar) ? $pasien_terdaftar['nama'] : "-" ?></p></td>
+                                <td><p class="mt-4"><?= !empty($dokter_terdaftar) ? $dokter_terdaftar['nama'] : "-" ?></p></td>
                             </tr>
                         </table>
                     </div>
@@ -65,7 +60,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item bg-light rounded h-100 p-5" style="align-items: center;">
                         <h4 class="mb-3 text-center">Total Antrian</h4>
-                        <h2 class="mb-3 text-center" style="font-size: 3rem">23 / 50 Antrean</h2>
+                        <h2 class="mb-3 text-center" style="font-size: 3rem"><?= !empty($nomor_selesai) ? $nomor_selesai : "-" ?> / <?= !empty($total_antrian) ? $total_antrian : "-" ?> Antrean</h2>
                     </div>
                 </div>
             </div>
@@ -75,3 +70,5 @@
         </div>
     </div>
     <!-- Service End -->
+
+<?= $this->endSection() ?>

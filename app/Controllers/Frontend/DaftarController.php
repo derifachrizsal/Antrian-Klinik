@@ -13,6 +13,8 @@ class DaftarController extends BaseController
 {
     public function index()
     {
+
+        // echo '<pre>';print_r(session()->get());die;
         echo view('Frontend/part/header');
         echo view('Frontend/daftar');
         echo view('Frontend/part/footer');
@@ -49,6 +51,14 @@ class DaftarController extends BaseController
                     'tanggal_pendaftaran' => date('Y-m-d', strtotime($this->request->getPost('tanggal')))
                 ])->countAllResults();
 
+                $nomorAntrianAktif = $antrian->where([
+                    'poli' => $this->request->getPost('poli'),
+                    'tanggal_pendaftaran' => date('Y-m-d', strtotime($this->request->getPost('tanggal'))),
+                    'status_antrian' => 1
+                ])->countAllResults();
+
+                $status_antrian = $nomorAntrianAktif > 0 ? 1 : 2;
+
                 // Ditambahin huruf depannya biar ga bingung
                 $nomor = $this->hurufAntrian($this->request->getPost('poli')) . ($nomorTerakhir + 1);
 
@@ -57,7 +67,7 @@ class DaftarController extends BaseController
                     'id_dokter' => $this->request->getPost('id_dokter'),
                     'poli' => $this->request->getPost('poli'),
                     'tanggal_pendaftaran' => date('Y-m-d', strtotime($this->request->getPost('tanggal'))),
-                    'status_antrian' => 1, // 1 berarti aktif
+                    'status_antrian' => $status_antrian, // 1 berarti aktif
                     'no_antrian' => $nomor
                 ]);
 
