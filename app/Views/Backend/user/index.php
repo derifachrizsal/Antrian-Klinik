@@ -54,14 +54,16 @@
 										<td><?= $index += 1 ?>.</td>
 										<td><?= $userlist['username'] ?></td>
 										<td>
-											<div class="form-button-action">
-												<a href="<?= base_url('adm/user/'.$userlist['id_user'].'/edit') ?>" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-													<i class="fa fa-edit"></i>
-												</a>
-												<button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger delete_button" data-original-title="Remove" data-href="<?= base_url('adm/user/'.$userlist['id_user'].'/delete') ?>">
-													<i class="fa fa-times"></i>
-												</button>
-											</div>
+											<?php if ($userlist['username'] != 'Admin') { ?>
+												<div class="form-button-action">
+													<a href="<?= base_url('adm/user/'.$userlist['id_user'].'/edit') ?>" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+														<i class="fa fa-edit"></i>
+													</a>
+													<button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger delete_button" data-original-title="Remove" data-href="<?= base_url('adm/user/'.$userlist['id_user'].'/delete') ?>">
+														<i class="fa fa-times"></i>
+													</button>
+												</div>
+											<?php } ?>
 										</td>
 									</tr>
 								<?php endforeach ?>
@@ -85,7 +87,7 @@
 		$("#basic-datatables").DataTable({});
 
 		$("#multi-filter-select").DataTable({
-			pageLength: 5,
+			pageLength: 20,
 			initComplete: function () {
 			this.api()
 				.columns()
@@ -118,7 +120,7 @@
 
 		// Add Row
 		$("#add-row").DataTable({
-			pageLength: 5,
+			pageLength: 20,
 		});
 
 		var action =

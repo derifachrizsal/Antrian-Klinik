@@ -91,7 +91,7 @@
 		$("#basic-datatables").DataTable({});
 
 		$("#multi-filter-select").DataTable({
-			pageLength: 5,
+			pageLength: 20,
 			initComplete: function () {
 			this.api()
 				.columns()
@@ -124,7 +124,7 @@
 
 		// Add Row
 		$("#add-row").DataTable({
-			pageLength: 5,
+			pageLength: 20,
 		});
 
 		var action =
@@ -153,6 +153,7 @@
 						url: href,
 						dataType: "json",
 						success: function(response) {
+							
 							if (response.status == "success")
 							{
 								swal({

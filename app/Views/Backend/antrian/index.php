@@ -36,6 +36,7 @@
 										<th>No </th>
 										<th>Nama Pasien</th>
 										<th>Nama Dokter</th>
+										<th>Poli</th>
 										<th>Nomor Antrian</th>
 										<th style="width: 10%">Aksi</th>
 									</tr>
@@ -45,6 +46,7 @@
 										<th>No </th>
 										<th>Nama Pasien</th>
 										<th>Nama Dokter</th>
+										<th>Poli</th>
 										<th>Nomor Antrian</th>
 										<th>Aksi</th>
 									</tr>
@@ -55,6 +57,7 @@
 										<td><?= $index += 1 ?>.</td>
 										<td><?= $antrianlist['nama_pasien'] ?></td>
 										<td><?= $antrianlist['nama_dokter'] ?></td>
+										<td><?= $antrianlist['poli'] ?></td>
 										<td><?= $antrianlist['no_antrian'] ?></td>
 										<td>
 											<div class="form-button-action">
@@ -85,7 +88,7 @@
 		$("#basic-datatables").DataTable({});
 
 		$("#multi-filter-select").DataTable({
-			pageLength: 5,
+			pageLength: 20,
 			initComplete: function () {
 			this.api()
 				.columns()
@@ -118,7 +121,7 @@
 
 		// Add Row
 		$("#add-row").DataTable({
-			pageLength: 5,
+			pageLength: 20,
 		});
 
 		var action =
