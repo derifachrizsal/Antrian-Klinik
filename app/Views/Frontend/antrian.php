@@ -38,7 +38,7 @@
                 <p class="d-inline-block border rounded-pill py-1 px-4">ANTREAN PENDAFTARAN PASIEN</p>
             </div>
             <div class="text-center mx-auto mb-3 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <p class="d-inline-block border rounded-pill py-1 px-4">POLI UMUM</p>
+                <p class="d-inline-block border rounded-pill py-1 px-4">POLI <?= !empty($nama_poli) ? $nama_poli : "-" ?></p>
             </div>
             <div class="row g-4">
                 <div class="col-lg-9 col-md-9 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item bg-light rounded h-100 p-5" style="align-items: center;">
-                        <h4 class="mb-3 text-center">Total Antrian</h4>
+                        <h4 class="mb-3 text-center">Total Antrean</h4>
                         <h2 class="mb-3 text-center" style="font-size: 3rem"><?= !empty($nomor_selesai) ? $nomor_selesai : "-" ?> / <?= !empty($total_antrian) ? $total_antrian : "-" ?> Antrean</h2>
                     </div>
                 </div>

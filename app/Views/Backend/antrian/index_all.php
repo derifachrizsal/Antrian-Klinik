@@ -16,7 +16,7 @@
 					<i class="icon-arrow-right"></i>
 				</li>
 				<li class="nav-item">
-					<a href="#">Antrean Hari Ini</a>
+					<a href="#">Seluruh Antrean</a>
 				</li>
 			</ul>
 		</div>
@@ -25,7 +25,7 @@
 				<div class="card">
 					<div class="card-header">
 						<div class="d-flex align-items-center">
-							<h4 class="card-title">List Antrean Hari Ini</h4>
+							<h4 class="card-title">List Seluruh Antrean</h4>
 						</div>
 					</div>
 					<div class="card-body">
@@ -38,6 +38,8 @@
 										<th>Nama Dokter</th>
 										<th>Poli</th>
 										<th>Nomor Antrean</th>
+										<th>Tanggal Antrean</th>
+										<th>Tanggal Antrean</th>
 										<th style="width: 10%">Aksi</th>
 									</tr>
 								</thead>
@@ -48,6 +50,8 @@
 										<th>Nama Dokter</th>
 										<th>Poli</th>
 										<th>Nomor Antrean</th>
+										<th>Tanggal Antrean</th>
+										<th>Tanggal Antrean</th>
 										<th>Aksi</th>
 									</tr>
 								</tfoot>
@@ -59,13 +63,12 @@
 										<td><?= $antrianlist['nama_dokter'] ?></td>
 										<td><?= $antrianlist['poli'] ?></td>
 										<td><?= $antrianlist['no_antrian'] ?></td>
+										<td><?= $antrianlist['tanggal_pendaftaran'] ?></td>
+										<td><?= $antrianlist['status_antrian'] == 0 ? "<span class='badge bg-secondary'>Telah Ditangani" : "<span class='badge bg-danger'>Belum Ditangani" ?></span></td>
 										<td>
 											<div class="form-button-action">
 												<a href="<?= base_url('adm/antrian/'.$antrianlist['id_antrian'].'/detail') ?>" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Detail antrean">
 													<i class="fa fa-file-alt"></i>
-												</a>
-												<a href="<?= base_url('adm/antrian/'.$antrianlist['id_antrian'].'/approve') ?>" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Approve antrean">
-													<i class="fa fa-check"></i>
 												</a>
 											</div>
 										</td>

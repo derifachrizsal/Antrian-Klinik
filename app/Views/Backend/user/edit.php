@@ -38,15 +38,15 @@
                 <div class="col-md-12 col-lg-12">
                   <input type="hidden" name="id" value="<?= $user['id_user'] ?>" />
                   <div class="form-group form-inline">
-                    <label for="inlineinput" class="col-md-3 col-form-label" >Nama user</label>
+                    <label for="inlineinput" class="col-md-3 col-form-label" >Username <span class="text-danger">*</span></label>
                     <div class="col-md-12 p-0">
-                      <input type="text" class="form-control input-full" id="inlineinput" placeholder="Masukan Nama" name="username" value="<?= $user['username'] ?>" required />
+                      <input type="text" class="form-control input-full" id="inlineinput" placeholder="Masukan Username" name="username" value="<?= $user['username'] ?>" required />
                     </div>
                   </div>
                   <div class="form-group form-inline">
-                    <label for="inlineinput" class="col-md-3 col-form-label" >Password</label>
+                    <label for="inlineinput" class="col-md-3 col-form-label" >Password (<span class="text-danger">kosongkan jika tidak diubah</span>)</label>
                     <div class="col-md-12 p-0">
-                      <input type="password" class="form-control input-full" id="inlineinput" placeholder="Masukan Password" name="password" value="<?= $user['password'] ?>" required />
+                      <input type="password" class="form-control input-full" id="inlineinput" placeholder="Masukan Password" name="password" value="" />
                     </div>
                   </div>
                 </div>

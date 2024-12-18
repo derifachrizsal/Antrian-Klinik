@@ -34,26 +34,40 @@
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h1>Pengguna Akun</h1>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-heartbeat text-primary fs-4"></i>
+            <?php if ($total_pasien > 0) { ?>
+                <div class="row g-4">
+                    <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="service-item bg-light rounded h-100 p-5">
+                            <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                                <i class="fa fa-heartbeat text-primary fs-4"></i>
+                            </div>
+                            <h4 class="mb-3">Daftarkan Pasien Baru (Belum Pernah Berkunjung)</h4>
+                            <a class="btn" href="<?= base_url('/datapasien') ?>"><i class="fa fa-plus text-primary me-3"></i>Klik Disini</a>
                         </div>
-                        <h4 class="mb-3">Pasien Baru (Belum Pernah Berkunjung)</h4>
-                        <a class="btn" href="<?= base_url('/datapasien') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
+                    </div>
+                    <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="service-item bg-light rounded h-100 p-5">
+                            <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                                <i class="fa fa-x-ray text-primary fs-4"></i>
+                            </div>
+                            <h4 class="mb-3">Pasien Lama (Sudah Pernah Berkunjung)</h4>
+                            <a class="btn" href="<?= base_url('/daftar/daftarpasien') ?>"><i class="fa fa-plus text-primary me-3"></i>Klik Disini</a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-x-ray text-primary fs-4"></i>
+            <?php } else { ?>
+                <div class="row g-4">
+                    <div class="col-lg-12 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="service-item bg-light rounded h-100 p-5">
+                            <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                                <i class="fa fa-heartbeat text-primary fs-4"></i>
+                            </div>
+                            <h4 class="mb-3">Mohon Daftarkan Pasien Terlebih Dahulu</h4>
+                            <a class="btn" href="<?= base_url('/datapasien') ?>"><i class="fa fa-plus text-primary me-3"></i>Klik Disini</a>
                         </div>
-                        <h4 class="mb-3">Pasien Lama (Sudah Pernah Berkunjung)</h4>
-                        <a class="btn" href="<?= base_url('/daftar/daftarpasien') ?>"><i class="fa fa-plus text-primary me-3"></i>Click here</a>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
     <!-- Service End -->

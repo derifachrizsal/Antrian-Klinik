@@ -38,7 +38,7 @@ class UserController extends BaseController
                 $User = new UserModel();
                 $User->insert([
                     'username' => $this->request->getPost('username'),
-                    'password' => $this->request->getPost('password'),
+                    'password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
                 ]);
 
                 return redirect('adm/user');
@@ -62,17 +62,22 @@ class UserController extends BaseController
             // validasi 
             $validation = \Config\Services::validation();
             $validation->setRules([
-                'usernamer' => 'required',
-                'password' => 'required',
+                'username' => 'required',
             ]);
             $isDataValid = $validation->withRequest($this->request)->run();
 
             // valid ?
             if (!empty($this->request->getPost()) && $isDataValid) {
-                $user->update($id, [
-                    'username' => $this->request->getPost('username'),
-                    'password' => $this->request->getPost('password'),
-                ]);
+                $insert_data = ['username' => $this->request->getPost('username')];
+
+                if (!empty($this->request->getPost('password'))) {
+                    $insert_data = [
+                        ...$insert_data, 
+                        'password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
+                    ];
+                }
+
+                $user->update($id, $insert_data);
 
                 return redirect('adm/user');
             }

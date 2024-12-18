@@ -54,7 +54,14 @@
 					<li class="nav-item <?php if (count(explode('/', uri_string())) > 1 && explode('/', uri_string())[1] == 'antrian') echo 'active'; ?>">
 						<a href="<?= base_url('adm/antrian') ?>">
 							<i class="fas fa-desktop"></i>
-							<p>Antrian</p>
+							<p>Antrean Hari Ini</p>
+							<span class="badge badge-success"></span>
+						</a>
+					</li>
+					<li class="nav-item <?php if (count(explode('/', uri_string())) > 1 && explode('/', uri_string())[1] == 'antrianAll') echo 'active'; ?>">
+						<a href="<?= base_url('adm/antrianAll') ?>">
+							<i class="fas fa-desktop"></i>
+							<p>Seluruh Antrean</p>
 							<span class="badge badge-success"></span>
 						</a>
 					</li>

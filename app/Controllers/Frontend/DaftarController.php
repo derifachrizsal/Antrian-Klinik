@@ -13,10 +13,12 @@ class DaftarController extends BaseController
 {
     public function index()
     {
-
         // echo '<pre>';print_r(session()->get());die;
+        $data = array();
+        $data['total_pasien'] = $this->countPasien();
+
         echo view('Frontend/part/header');
-        echo view('Frontend/daftar');
+        echo view('Frontend/daftar', $data);
         echo view('Frontend/part/footer');
     }
 
@@ -54,7 +56,7 @@ class DaftarController extends BaseController
                 $nomorAntrianAktif = $antrian->where([
                     'poli' => $this->request->getPost('poli'),
                     'tanggal_pendaftaran' => date('Y-m-d', strtotime($this->request->getPost('tanggal'))),
-                    'status_antrian' => 1
+                    'status_antrian' => 2
                 ])->countAllResults();
 
                 $status_antrian = $nomorAntrianAktif > 0 ? 1 : 2;
@@ -76,6 +78,7 @@ class DaftarController extends BaseController
                 $data['dokter_terdaftar'] = $dokter->where('id_dokter', $this->request->getPost('id_dokter'))->first();
                 $data['pasien_terdaftar'] = $pasien->where('id_pasien', $this->request->getPost('id_pasien'))->first();
                 $data['nomor'] = $nomor;
+                $data['nama_poli'] = strtoupper($this->request->getPost('poli'));
 
                 $nomor_aktif = $antrian->where([
                     'poli' => $this->request->getPost('poli'),
@@ -171,6 +174,33 @@ class DaftarController extends BaseController
                 'message' => 'Dokter Tidak Ditemukan'
             ]);
         }
+    }
+
+    public function getDetailPasien($id) 
+    {
+        $pasien = new PasienModel();
+        $data = $pasien->where('id_pasien', $id)->get()->getResultArray();
+        if ($pasien) {
+            echo json_encode([
+                'status' => 'success',
+                'code' => 200,
+                'message' => 'Pasien Ditemukan',
+                'data' => $data
+            ]);
+        } else {
+            echo json_encode([
+                'status' => 'error',
+                'code' => 200,
+                'message' => 'Pasien Tidak Ditemukan'
+            ]);
+        }
+    }
+
+    public function countPasien() 
+    {
+        $pasien = new PasienModel();
+        $data = $pasien->where('id_user', session()->get('id'))->countAllResults();
+        return $data;
     }
 
     public function hurufAntrian($poli) {

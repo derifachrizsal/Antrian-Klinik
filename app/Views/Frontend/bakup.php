@@ -41,7 +41,7 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1>Antrian</h1>
+                <h1>Antrean</h1>
             </div>
             <div class="row g-4">
                 <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
@@ -50,7 +50,7 @@
                             <i class="fa fa-heartbeat text-primary fs-4"></i>
                         </div>
                         <h4 class="mb-3">Daftar</h4>
-                        <p class="mb-4">Ambil Antrian</p>
+                        <p class="mb-4">Ambil Antrean</p>
                         <a class="btn" href="poli.html"><i class="fa fa-plus text-primary me-3"></i>Read More</a>
                     </div>
                 </div>
@@ -59,8 +59,8 @@
                         <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                             <i class="fa fa-x-ray text-primary fs-4"></i>
                         </div>
-                        <h4 class="mb-3">Antrian</h4>
-                        <p class="mb-4">Lihat List Antrian</p>
+                        <h4 class="mb-3">Antrean</h4>
+                        <p class="mb-4">Lihat List Antrean</p>
                         <a class="btn" href="poli.html"><i class="fa fa-plus text-primary me-3"></i>Read More</a>
                     </div>
                 </div>

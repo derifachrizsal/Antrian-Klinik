@@ -10,6 +10,8 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/adm', 'Backend\DashboardController::index', ['filter' => 'auth']);
 $routes->get('/adm/antrian', 'Backend\AntrianController::index', ['filter' => 'auth']);
 $routes->add('/adm/antrian/(:segment)/approve', 'Backend\AntrianController::approve/$1', ['filter' => 'auth']);
+$routes->add('/adm/antrian/(:segment)/detail', 'Backend\AntrianController::detail/$1', ['filter' => 'auth']);
+$routes->get('/adm/antrianAll', 'Backend\AntrianController::indexAll', ['filter' => 'auth']);
 // Backend | dokter
 $routes->get('/adm/dokter', 'Backend\DokterController::index', ['filter' => 'auth']);
 $routes->add('/adm/dokter/add', 'Backend\DokterController::tambah', ['filter' => 'auth']);
@@ -43,6 +45,7 @@ $routes->get('/login/logout', 'Frontend\LoginController::logout');
 $routes->get('/daftar', 'Frontend\DaftarController::index', ['filter' => 'auth']);
 $routes->add('/daftar/daftarpasien', 'Frontend\DaftarController::daftarPasien', ['filter' => 'auth']);
 $routes->get('/daftar/getDokter/(:segment)', 'Frontend\DaftarController::getDokter/$1', ['filter' => 'auth']);
+$routes->get('/daftar/getDetailPasien/(:segment)', 'Frontend\DaftarController::getDetailPasien/$1', ['filter' => 'auth']);
 // $routes->add('/daftar/daftarantrian', 'Frontend\DaftarController::daftarAntrian', ['filter' => 'auth']);
 // $routes->get('/', 'Home::index')
 

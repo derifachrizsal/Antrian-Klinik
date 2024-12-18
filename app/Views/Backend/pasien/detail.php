@@ -159,8 +159,7 @@
             </table>
           </div>
           <div class="card-action">
-            <button type="submit"class="btn btn-success">Submit</button>
-            <a href="<?= base_url('adm/dokter') ?>" class="btn btn-danger">Cancel</a>
+            <a href="<?= base_url('adm/pasien') ?>" class="btn btn-danger">Kembali</a>
           </div>
         </div>
       </div>

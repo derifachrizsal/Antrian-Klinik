@@ -25,6 +25,10 @@ class AntrianController extends BaseController
             'tanggal_pendaftaran' => date('Y-m-d')
         ])->first();
 
+        // echo '<pre>';print_r(date('Y-m-d'));die;
+        
+        $data['nama_poli'] = strtoupper($type);
+
         if (!empty($antrian_hari_ini)) {
             $antrian_aktif = $antrian->where([
                 'poli' => $type,
@@ -49,7 +53,7 @@ class AntrianController extends BaseController
                 'tanggal_pendaftaran' => date('Y-m-d')
             ])->countAllResults();
 
-            $data['nomor_selesai'] = $this->hurufAntrian($type) . ($nomor_selesai);
+            $data['nomor_selesai'] = $this->hurufAntrian($type) . ($nomor_selesai == 0 ? 1 : $nomor_selesai);
             $data['total_antrian'] = $this->hurufAntrian($type) . ($total_antrian);
         }
 

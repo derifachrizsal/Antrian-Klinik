@@ -46,7 +46,7 @@
                         </div>
                         <div class="ms-4">
                             <div class="col-12 col-sm-12">
-                                <select name="id_pasien" class="form-select border-0" style="height: 55px;">
+                                <select name="id_pasien" id="pasien" class="form-select border-0" style="height: 55px;" required>
                                     <option value="">Pilih Pasien</option>
                                     <?php foreach ($pasien as $key => $pasienlist) { ?>
                                         <option value="<?= $pasienlist['id_pasien'] ?>"><?= $pasienlist['nama'] ?></option>
@@ -55,26 +55,40 @@
                             </div>
                         </div>
                     </div>
+                    <div id="detail" class="bg-light rounded d-flex align-items-center p-5 mb-4">
+                        <div class="col-12 col-sm-12">
+                            <h3 class="mb-4">Detail Pasien</h3>
+                            <hr />
+                            <table width="100%" id="table_detail">
+                                <tr>
+                                    <td><h5>Pilih Pasien Terlebih Dahulu</h5></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="bg-light rounded h-100 d-flex align-items-center p-5">
+                    <div class="bg-light rounded h-100 align-items-center d-flex p-5">
                         <div class="row g-3">
+                            <div class="col-12">
+                                <h1 class="mb-4">Mohon Pilih Poli Dan Dokter</h1>
+                            </div>
                             <div class="col-12 col-sm-12">
-                                <select id="poli" name="poli" class="form-select border-0" style="height: 55px;">
-                                    <option value="">-- Pilih Poli --</option>
+                                <select id="poli" name="poli" class="form-select border-0" style="height: 55px;" required>
+                                    <option value="0">-- Pilih Poli --</option>
                                     <?php foreach ($list_poli as $key => $value) { ?>
                                         <option value='<?= $value['value'] ?>'><?= $value['nama'] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
                             <div class="col-12 col-sm-12">
-                                <select id="dokter" name="id_dokter" class="form-select border-0" style="height: 55px;">
+                                <select id="dokter" name="id_dokter" class="form-select border-0" style="height: 55px;" required>
                                     <option selected>-- Pilih Dokter --</option>
                                 </select>
                             </div>
                             <div class="col-12 col-sm-12">
-                                <div class="date" id="date" data-target-input="nearest">
-                                    <input type="text" id="tanggal" name="tanggal" class="form-control border-0 datetimepicker-input" placeholder="Pilih Tanggal" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
+                                <div class="date" id="date" data-target-input="nearest" style="position: relative">
+                                    <input type="text" id="tanggal" name="tanggal" class="form-control border-0 datetimepicker-input" placeholder="Pilih Tanggal" data-target="#date" data-toggle="datetimepicker" style="height: 55px;" required>
                                 </div>
                             </div>
                             <!-- <div class="col-12">
@@ -98,7 +112,9 @@
 
     <script>
         $(document).ready(function() {
-            $('#tanggal').datetimepicker();
+            $('#tanggal').datetimepicker({
+                defaultDate:new Date()
+            });
         })
 
         $('#poli').on("change", function() {
@@ -118,6 +134,53 @@
                             html += "<option value=\""+dokter.id_dokter+"\">"+dokter.nama+"</option>"
                         });
                         $('#dokter').html(html);   
+                    }
+                    else
+                    {
+                        swal({
+                            title: "Gagal",
+                            text: response.message,
+                            icon: "error",
+                            buttons: {
+                                confirm: {
+                                    className: "btn btn-danger",
+                                },
+                            },
+                        });
+                    }
+                }
+            });
+        })
+
+        $('#pasien').on("change", function() {
+            $.ajax({
+                type: "GET",
+                url: "<?= base_url('/daftar/getDetailPasien/') ?>" + this.value,
+                dataType: "json",
+                success: function(response) {
+                    if (response.status == "success")
+                    {
+                        const pasien = response.data[0]
+                        var today = new Date();
+                        var ttl = new Date(pasien.tanggal_lahir);
+                        var age = Math.floor((today-ttl) / (365.25 * 24 * 60 * 60 * 1000));
+                        html = `<tr>
+                                    <td width="30%"><h5>Nama</h5></td>
+                                    <td><h5>: ${pasien.nama}</h5></td>
+                                </tr>
+                                <tr>
+                                    <td><h5>Usia</h5></td>
+                                    <td><h5>: ${age} Tahun</h5></td>
+                                </tr>
+                                <tr>
+                                    <td><h5>Jenis Kelamin</h5></td>
+                                    <td><h5>: ${pasien.jenis_kelamin == 'P' ? 'Perempuan' : 'Laki - Laki'}</h5></td>
+                                </tr>
+                                <tr>
+                                    <td><h5>Golongan Darah</h5></td>
+                                    <td><h5>: ${pasien.gol_darah}</h5></td>
+                                </tr>`
+                        $('#table_detail').html(html);
                     }
                     else
                     {
