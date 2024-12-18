@@ -36,7 +36,26 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12 col-lg-12">
+                  <?php if (! empty(\Config\Services::validation()->getErrors())): ?>
+                    <div class="form-group form-inline">
+                      <div class="col-md-12 p-0">
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                            <?php foreach (\Config\Services::validation()->getErrors() as $error): ?>
+                                <li><?= esc($error) ?></li>
+                            <?php endforeach ?>
+                            </ul>
+                        </div>
+                      </div>
+                    </div>
+                  <?php endif ?>
                   <input type="hidden" name="id" value="<?= $dokter['id_dokter'] ?>" />
+                  <div class="form-group form-inline">
+                    <label for="inlineinput" class="col-md-3 col-form-label">NIK <span class="text-danger">*</span></label>
+                    <div class="col-md-12 p-0">
+                      <input type="number" class="form-control input-full" id="inlineinput" placeholder="Masukan NIK" name="nik_dokter" value="<?= $dokter['nik_dokter'] ?>" />
+                    </div>
+                  </div>
                   <div class="form-group form-inline">
                     <label for="inlineinput" class="col-md-3 col-form-label" >Nama Dokter</label>
                     <div class="col-md-12 p-0">

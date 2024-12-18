@@ -11,6 +11,7 @@ class DokterModel extends Model
 
     protected $useAutoIncrement = true;
     protected $allowedFields = [
+        'nik_dokter',
         'nama',
         'poli',
         'alamat',

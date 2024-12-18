@@ -73,7 +73,7 @@ class AntrianController extends BaseController
             $antrian = new AntrianModel();
             
             // update antrian saat ini
-            $antrian->update($id, [
+            $update = $antrian->update($id, [
                 'status_antrian' => 0,
             ]);
 
@@ -94,7 +94,22 @@ class AntrianController extends BaseController
                 ]);
             }
 
-            return redirect('adm/antrian');
+            if ($update) {
+                echo json_encode([
+                    'status' => 'success',
+                    'code' => 200,
+                    'message' => 'Berhasil Update Antrean',
+                    'data' => $update
+                ]);
+            } else {
+                echo json_encode([
+                    'status' => 'error',
+                    'code' => 500,
+                    'message' => 'Gagal Update Antrean'
+                ]);
+            }
+            
+            // return redirect('adm/antrian');
         } else {
             return redirect('/');
         }

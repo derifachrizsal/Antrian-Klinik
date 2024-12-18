@@ -66,30 +66,31 @@ class PasienController extends BaseController
             $data = array();
             $pasien = new PasienModel();
             $data['pasien'] = $pasien->where('id_pasien', $id)->first();
-            
-            // validasi 
-            $validation = \Config\Services::validation();
-            $validation->setRules([
-                'nama'         =>'required',
-                'jeniskelamin' => 'required',
-                'Tempatlahir' => 'required',
-                'tanggallahir' => 'required',
-                'goldar' => 'required',
-                'alamatlengkap' => 'required',
-                'kelurahan' => 'required',
-                'kecamatan' => 'required',
-                'kodepos' => 'required',
-                'notelp' => 'required',
-                'email' => 'required',
-                'pendidikanterakhir' => 'required',
-                'pekerjaan' => 'required',
-                'NIK' => 'required',
-                'nobpjs' => 'required',
-            ]);
-            $isDataValid = $validation->withRequest($this->request)->run();
-            
-            // valid ?
+                        
             if (!empty($this->request->getPost())) {
+
+                // validasi 
+                $validation = \Config\Services::validation();
+                $validation->setRules([
+                    'nama'         =>'required',
+                    'jeniskelamin' => 'required',
+                    'Tempatlahir' => 'required',
+                    'tanggallahir' => 'required',
+                    'goldar' => 'required',
+                    'alamatlengkap' => 'required',
+                    'kelurahan' => 'required',
+                    'kecamatan' => 'required',
+                    'kodepos' => 'required',
+                    'notelp' => 'required',
+                    'email' => 'required',
+                    'pendidikanterakhir' => 'required',
+                    'pekerjaan' => 'required',
+                    'NIK' => 'required',
+                    'nobpjs' => 'required',
+                ]);
+                $isDataValid = $validation->withRequest($this->request)->run();
+                
+                // valid ?
                 if ($isDataValid){
                     $pasien->update($id, [
                         'nama' => $this->request->getPost('nama'),
@@ -109,8 +110,10 @@ class PasienController extends BaseController
                         'pendidikan_terakhir' => $this->request->getPost('pendidikanterakhir'),
                     ]);
 
+                    session()->setFlashdata('msg', 'Data Berhasil Diedit.');
                     return redirect('adm/pasien');
                 }
+                session()->setFlashdata('msg', 'Data Gagal Diedit.');
             }
 
             return view('Backend/pasien/edit', $data);

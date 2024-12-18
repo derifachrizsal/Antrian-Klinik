@@ -35,15 +35,34 @@
           <form action="" method="post" enctype="multipart/form-data">
             <div class="card-body">
               <div class="row">
+                <?php if (! empty(\Config\Services::validation()->getErrors())): ?>
+                  <div class="form-group form-inline">
+                    <div class="col-md-12 p-0">
+                      <div class="alert alert-danger" role="alert">
+                          <ul>
+                          <?php foreach (\Config\Services::validation()->getErrors() as $error): ?>
+                              <li><?= esc($error) ?></li>
+                          <?php endforeach ?>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                <?php endif ?>
                 <div class="col-md-12 col-lg-12">
                   <div class="form-group form-inline">
-                    <label for="inlineinput" class="col-md-3 col-form-label" >Nama Dokter</label>
+                    <label for="inlineinput" class="col-md-3 col-form-label">NIK <span class="text-danger">*</span></label>
+                    <div class="col-md-12 p-0">
+                      <input type="text" class="form-control input-full" id="inlineinput" placeholder="Masukan NIK" name="nik_dokter" required />
+                    </div>
+                  </div>
+                  <div class="form-group form-inline">
+                    <label for="inlineinput" class="col-md-3 col-form-label">Nama Dokter <span class="text-danger">*</span></label>
                     <div class="col-md-12 p-0">
                       <input type="text" class="form-control input-full" id="inlineinput" placeholder="Masukan Nama" name="nama_dokter" required />
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="jk">Jenis Kelamin</label>
+                    <label for="jk">Jenis Kelamin <span class="text-danger">*</span></label>
                     <select class="form-select" id="jk" name="jk_dokter" required>
                       <option value="">-- Pilih Jenis Kelamin --</option>
                       <option value="L">Laki - Laki</option>
@@ -51,17 +70,17 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="alamat">Alamat</label>
+                    <label for="alamat">Alamat <span class="text-danger">*</span></label>
                     <textarea class="form-control" id="alamat" name="alamat" rows="5" required></textarea>
                   </div>
                   <div class="form-group form-inline">
-                    <label for="no_telp" class="col-md-3 col-form-label" >Nomor Telepon</label>
+                    <label for="no_telp" class="col-md-3 col-form-label">Nomor Telepon <span class="text-danger">*</span></label>
                     <div class="col-md-12 p-0">
                       <input type="text" class="form-control input-full" id="no_telp" placeholder="Masukan Nomor Telepon" name="np_dokter" required />
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="poli">Poli</label>
+                    <label for="poli">Poli <span class="text-danger">*</span></label>
                     <select class="form-select" id="poli" name="poli_dokter" required>
                       <option value="">-- Pilih Poli --</option>
                       <?php foreach ($list_poli as $key => $value) { ?>
@@ -69,10 +88,10 @@
                       <?php } ?>
                     </select>
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="image">Image</label>
                     <input type="file" name="image" class="form-control">
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>

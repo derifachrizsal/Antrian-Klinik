@@ -64,9 +64,9 @@
 												<a href="<?= base_url('adm/antrian/'.$antrianlist['id_antrian'].'/detail') ?>" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Detail antrean">
 													<i class="fa fa-file-alt"></i>
 												</a>
-												<a href="<?= base_url('adm/antrian/'.$antrianlist['id_antrian'].'/approve') ?>" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Approve antrean">
+												<button id="approve" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Approve antrean" data-href="<?= base_url('adm/antrian/'.$antrianlist['id_antrian'].'/approve') ?>">
 													<i class="fa fa-check"></i>
-												</a>
+												</button>
 											</div>
 										</td>
 									</tr>
@@ -130,15 +130,15 @@
 		var action =
 			'<td> <div class="form-button-action"> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
 
-		$(".delete_button").click(function (e) {
+		$("#approve").click(function (e) {
 			var href = $(this).attr("data-href")
 			swal({
-				title: "Are you sure?",
-				text: "You won't be able to revert this!",
+				title: "Konfirmasi",
+				text: "Apakah anda yakin akan menyelesaikan antrean ini ?",
 				type: "warning",
 				buttons: {
 					confirm: {
-						text: "Yes, delete it!",
+						text: "Ya, Selesaikan antrean!",
 						className: "btn btn-success",
 					},
 					cancel: {
@@ -149,7 +149,7 @@
 			}).then((Delete) => {
 				if (Delete) {
 					$.ajax({
-						type: "GET",
+						type: "POST",
 						url: href,
 						dataType: "json",
 						success: function(response) {

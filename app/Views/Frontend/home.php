@@ -51,7 +51,7 @@
                             <i class="fa fa-x-ray text-primary fs-4"></i>
                         </div>
                         <h4 class="mb-3">Monitoring Antrean</h4>
-                        <p class="mb-4">Lihat List Antrean</p>
+                        <p class="mb-4">Lihat Antrean Hari Ini</p>
                         <a class="btn" href="<?= base_url('/poli') ?>"><i class="fa fa-plus text-primary me-3"></i>Klik Disini</a>
                     </div>
                 </div>
